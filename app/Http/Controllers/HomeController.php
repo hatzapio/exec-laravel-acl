@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Chamado;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $chamados = Chamado::all();
+        return view('home', compact('chamados'));
+    }
+
+    public function detalhe($id)
+    {
+        $chamado = Chamado::find($id);
+        $this->authorize('ver-chamado', $chamado);
+        return view('detalhe', compact('chamado'));
     }
 }
