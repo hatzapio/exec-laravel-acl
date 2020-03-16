@@ -33,6 +33,9 @@ class User extends Authenticatable
       return $this->belongsToMany('App\Carro');
     }
 
-
+    public function chmados()
+    {
+      return $this->belongsToMany('App\Chamado');
+    }
 
 }
