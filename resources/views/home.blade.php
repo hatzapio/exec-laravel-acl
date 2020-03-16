@@ -5,10 +5,19 @@
     <div class="row">
         <h2>Lista de Chamados</h2>
 
+        @can('create', App\Chamado::class)
+            <p>Criar Chamado</p>
+        @endcan
+
         @forelse($chamados as $key => $value)
             <p>{{$value->titulo}}
-                @can('ver-chamado', $value)
-                    - <a href="/home/{{$value->id}}">Editar</a>
+                @can('view', $value)
+                    @can('update', $value)
+                        - <a href="/home/{{$value->id}}">Editar</a>
+                    @endcan
+                    @can('delete', $value)
+                        - <a href="/home/{{$value->id}}">Deletar</a>
+                    @endcan
                 @endcan
             </p>
         @empty

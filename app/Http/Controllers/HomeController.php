@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function detalhe($id)
     {
         $chamado = Chamado::find($id);
-        $this->authorize('ver-chamado', $chamado);
+        $this->authorize('view', $chamado);
         return view('detalhe', compact('chamado'));
     }
 }

@@ -27,7 +27,23 @@ class ChamadoPolicy
         }
     }
 
-    public function verChamado($user, Chamado $chamado) {
+    public function delete(User $user, Chamado $chamado)
+    {
         return $user->id == $chamado->user_id;
+    }
+
+    public function update(User $user, Chamado $chamado)
+    {
+        return $user->id == $chamado->user_id;
+    }
+
+    public function view(User $user, Chamado $chamado)
+    {
+        return $user->id == $chamado->user_id;
+    }
+
+    public function create(User $user)
+    {
+        return true;
     }
 }
